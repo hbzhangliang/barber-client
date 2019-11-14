@@ -27,6 +27,7 @@ function unregisterRoutes() {
   })
 }
 
+/*
 module.exports = app => {
   // es6 polyfill
   require('@babel/register')
@@ -66,3 +67,5 @@ module.exports = app => {
     }
   })
 }
+
+*/

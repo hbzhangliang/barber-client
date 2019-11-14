@@ -22,3 +22,38 @@ export function logout() {
     method: 'post'
   })
 }
+
+export function departListAll() {
+  return request({
+    url: '/depart/list-all',
+    method: 'post'
+  })
+}
+export function departList(pageParams) {
+  return request({
+    url: '/depart/list',
+    method: 'post',
+    pageParams
+  })
+}
+export function departGet(params) {
+  return request({
+    url: '/depart/get',
+    method: 'post',
+    params
+  })
+}
+export function departSave(bean) {
+  return request({
+    url: '/depart/save',
+    method: 'post',
+    bean
+  })
+}
+export function departDel(params) {
+  return request({
+    url: '/depart/del',
+    method: 'post',
+    params
+  })
+}
