@@ -84,6 +84,40 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/user-mng',
+    component: Layout,
+    meta: {
+      title: '用户管理',
+      icon: 'peoples'
+    },
+    children: [
+      {
+        path: 'depart',
+        component: () => import('@/views/user-mng/depart'),
+        name: '门店管理',
+        meta: { title: '门店管理', icon: 'tree-table' }
+      },
+      {
+        path: 'account',
+        component: () => import('@/views/user-mng/depart'),
+        name: '账号管理',
+        meta: { title: '账号管理', icon: 'form' }
+      },
+      {
+        path: 'barber',
+        component: () => import('@/views/user-mng/depart'),
+        name: '美容师管理',
+        meta: { title: '美容师管理', icon: 'people' }
+      },
+      {
+        path: 'customer',
+        component: () => import('@/views/user-mng/depart'),
+        name: '客户管理',
+        meta: { title: '客户管理', icon: 'peoples' }
+      }
+    ]
+  },
+  {
     path: '/documentation',
     component: Layout,
     children: [
@@ -91,7 +125,7 @@ export const constantRoutes = [
         path: 'index',
         component: () => import('@/views/documentation/index'),
         name: 'Documentation',
-        meta: { title: 'Documentation', icon: 'documentation'}
+        meta: { title: 'Documentation', icon: 'documentation' }
       }
     ]
   },

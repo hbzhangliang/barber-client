@@ -81,7 +81,7 @@ export default {
     return {
       list: null,
       total: null,
-      listLoading: true,
+      listLoading: false,
       listQuery: {
         page: 1,
         limit: 10
@@ -96,7 +96,7 @@ export default {
   },
   methods: {
     async getList() {
-      this.listLoading = true
+      this.listLoading = false
       const { data } = await fetchList(this.listQuery)
       this.list = data.items
       this.total = data.total

@@ -29,31 +29,31 @@ export function departListAll() {
     method: 'post'
   })
 }
-export function departList(pageParams) {
+export function departList(data) {
   return request({
     url: '/depart/list',
     method: 'post',
-    pageParams
+    data
   })
 }
-export function departGet(params) {
+export function departGet(data) {
   return request({
     url: '/depart/get',
     method: 'post',
-    params
+    data
   })
 }
-export function departSave(bean) {
+export function departSave(data) {
   return request({
     url: '/depart/save',
     method: 'post',
-    bean
+    data
   })
 }
-export function departDel(params) {
+export function departDel(data) {
   return request({
     url: '/depart/del',
     method: 'post',
-    params
+    data
   })
 }
