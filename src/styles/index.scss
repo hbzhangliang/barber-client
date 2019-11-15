@@ -189,3 +189,44 @@ aside {
 .multiselect--active {
   z-index: 1000 !important;
 }
+
+
+.sf-list-img{
+  width: 23px;
+  height: 23px;
+  vertical-align: middle;
+}
+
+.sf-board {
+  width: 98%;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.sf-kanban {
+  &.todo {
+    .board-column-header {
+      background: #4A9FF9;
+    }
+  }
+  &.working {
+    .board-column-header {
+      background: #f9944a;
+    }
+  }
+  &.done {
+    .board-column-header {
+      background: #2ac06d;
+    }
+  }
+}
+
+.sf-box-card{
+  width: 100%;
+}
+
+.w-300{
+  width: 300px;
+}
