@@ -480,5 +480,21 @@
 </script>
 <style lang="scss">
 
-
+  .sf-kanban {
+    &.todo {
+      .board-column-header {
+        background: #4A9FF9;
+      }
+    }
+    &.working {
+      .board-column-header {
+        background: #f9944a;
+      }
+    }
+    &.done {
+      .board-column-header {
+        background: #2ac06d;
+      }
+    }
+  }
 </style>
