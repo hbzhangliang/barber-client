@@ -1,12 +1,12 @@
 <template>
-  <div class="app-container">
+    <el-card :body-style="{ padding: '10px' }" style="padding: 0px;margin: 2px;">
     <div class="filter-container">
       <div class="searchBar">
         <el-card class="sf-box-card" style="margin-bottom: 5px;" :body-style="{ padding: '10px' }">
           <el-form>
             <el-row>
             <el-col :span="11">
-              名称:<el-input v-model="pageParams.filter.lk_name" class="filter-item w-300"  placeholder="请输入名称,模糊查询"></el-input>
+              名称:<el-input v-model="pageParams.filter.lk_name" class="filter-item w-300" placeholder="请输入名称,模糊查询"></el-input>
             </el-col>
             <el-col :span="11">
               地址:<el-input v-model="pageParams.filter.lk_address" class="filter-item w-300" placeholder="请输入地址,模糊查询"></el-input>
@@ -131,7 +131,7 @@
 
 
 
-    <el-dialog title="选择显示项" :visible.sync="showFlag" width="50%">
+    <el-dialog title="选择显示项" :visible.sync="showFlag" width="50%"  :close-on-click-modal="false">
       <el-card class="sf-box-card">
       <div class="components-container sf-board">
         <Kanban :list="hasShow" :group="group" class="sf-kanban done" header-text="已显示项" />
@@ -150,8 +150,7 @@
       </div>
 
     </el-dialog>
-
-  </div>
+    </el-card>
 </template>
 
 <script>
@@ -484,8 +483,6 @@
   }
 </script>
 <style lang="scss">
-
-
 
 
 </style>
