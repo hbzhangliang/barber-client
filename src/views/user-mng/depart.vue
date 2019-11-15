@@ -82,17 +82,13 @@
       <el-table-column  align="center" :show-overflow-tooltip="true" v-for="item in showFact" :sortable="item.sortable" :prop="item.prop" :label="item.label">
       </el-table-column>
 
-      <el-table-column label="操作" align="center" width="230"  fixed="right" class-name="small-padding fixed-width">
+      <el-table-column label="操作" align="center" width="200"  fixed="right" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
-          <el-button type="primary" @click="handle(row,'edit')">
-            编辑
-          </el-button>
-          <el-button  type="success" @click="handle(row,'view')">
-            查看
-          </el-button>
-          <el-button  type="danger" @click="handle(row,'del')">
-            删除
-          </el-button>
+          <el-button-group>
+          <el-button type="primary" icon="el-icon-edit" @click="handle(row,'edit')"></el-button>
+          <el-button type="success" icon="el-icon-view" @click="handle(row,'view')"></el-button>
+          <el-button type="danger" icon="el-icon-delete" @click="handle(row,'del')"></el-button>
+          </el-button-group>
         </template>
       </el-table-column>
     </el-table>
