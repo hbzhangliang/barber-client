@@ -1,43 +1,43 @@
 <template>
-    <el-card :body-style="{ padding: '10px' }" style="padding: 0px;margin: 2px;">
+  <el-card :body-style="{ padding: '10px' }" style="padding: 0px;margin: 2px;">
     <div class="filter-container">
       <div class="searchBar">
         <el-card class="sf-box-card" style="margin-bottom: 5px;" :body-style="{ padding: '10px' }">
           <el-form>
             <el-row>
-            <el-col :span="11">
-              名称:<el-input v-model="pageParams.filter.lk_name" class="filter-item w-300" placeholder="请输入名称,模糊查询"></el-input>
-            </el-col>
-            <el-col :span="11">
-              地址:<el-input v-model="pageParams.filter.lk_address" class="filter-item w-300" placeholder="请输入地址,模糊查询"></el-input>
-            </el-col>
+              <el-col :span="11">
+                名称:<input v-model="pageParams.filter.lk_name" class="w-300" placeholder="请输入名称,模糊查询">
+              </el-col>
+              <el-col :span="11">
+                地址:<el-input v-model="pageParams.filter.lk_address" class="filter-item w-300" placeholder="请输入地址,模糊查询" />
+              </el-col>
 
-            <el-col :span="2">
-              <div v-if="showSearchMore">
-                <el-button v-waves class="filter-item" type="primary" icon="el-icon-caret-top"    @click="btnShowMore">缩起</el-button>
-              </div>
-              <div v-else>
-                <el-button v-waves class="filter-item" type="primary" icon="el-icon-caret-bottom"  @click="btnShowMore">展开</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row v-show="showSearchMore">
-            <el-col :span="11">
-              图片:<el-input v-model="pageParams.filter.lk_phone" class="filter-item w-300"  placeholder="请输入图片,模糊查询"></el-input>
-            </el-col>
-            <el-col :span="11">
-              简介:<el-input v-model="pageParams.filter.lk_introduce" class="filter-item w-300" placeholder="请输入简介,模糊查询"></el-input>
-            </el-col>
-          </el-row>
-          <el-row v-show="showSearchMore">
-            <el-col :span="11">
-              备注:<el-input v-model="pageParams.filter.lk_remark" class="filter-item w-300"  placeholder="请输入备注,模糊查询"></el-input>
-            </el-col>
-            <el-col :span="11">
-              状态:<el-input v-model="pageParams.filter.lk_status" class="filter-item w-300" placeholder="请输入状态,模糊查询"></el-input>
-            </el-col>
-          </el-row>
-        </el-form>
+              <el-col :span="2">
+                <div v-if="showSearchMore">
+                  <el-button v-waves class="filter-item" type="primary" icon="el-icon-caret-top" @click="btnShowMore">缩起</el-button>
+                </div>
+                <div v-else>
+                  <el-button v-waves class="filter-item" type="primary" icon="el-icon-caret-bottom" @click="btnShowMore">展开</el-button>
+                </div>
+              </el-col>
+            </el-row>
+            <el-row v-show="showSearchMore">
+              <el-col :span="11">
+                图片:<el-input v-model="pageParams.filter.lk_phone" class="filter-item w-300" placeholder="请输入图片,模糊查询" />
+              </el-col>
+              <el-col :span="11">
+                简介:<el-input v-model="pageParams.filter.lk_introduce" class="filter-item w-300" placeholder="请输入简介,模糊查询" />
+              </el-col>
+            </el-row>
+            <el-row v-show="showSearchMore">
+              <el-col :span="11">
+                备注:<el-input v-model="pageParams.filter.lk_remark" class="filter-item w-300" placeholder="请输入备注,模糊查询" />
+              </el-col>
+              <el-col :span="11">
+                状态:<el-input v-model="pageParams.filter.lk_status" class="filter-item w-300" placeholder="请输入状态,模糊查询" />
+              </el-col>
+            </el-row>
+          </el-form>
         </el-card>
       </div>
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
@@ -56,7 +56,7 @@
       <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
         导出
       </el-button>
-      <el-button v-waves  type="danger" v-if="multipleSelection.length>0"  class="filter-item" @click="delBatch"><i class="el-icon-delete"></i>批量删除</el-button>
+      <el-button v-if="multipleSelection.length>0" v-waves type="danger" class="filter-item" @click="delBatch"><i class="el-icon-delete" />批量删除</el-button>
     </div>
 
     <el-table
@@ -72,22 +72,21 @@
       <el-table-column width="50"
                        fixed="left"
                        label="选择"
-                       type="selection">
-      </el-table-column>
-      <el-table-column  prop="" label="图像" align="center">
+                       type="selection"
+      />
+      <el-table-column prop="" label="图像" align="center">
         <template scope="scope">
-          <img v-if="scope.row.photo!=null&&scope.row.photo.trim().length>0" :src="scope.row.photo" class="sf-list-img"/>
+          <img v-if="scope.row.photo!=null&&scope.row.photo.trim().length>0" :src="scope.row.photo" class="sf-list-img">
         </template>
       </el-table-column>
-      <el-table-column  align="center" :show-overflow-tooltip="true" v-for="item in showFact" :sortable="item.sortable" :prop="item.prop" :label="item.label">
-      </el-table-column>
+      <el-table-column v-for="item in showFact" align="center" :show-overflow-tooltip="true" :sortable="item.sortable" :prop="item.prop" :label="item.label" />
 
-      <el-table-column label="操作" align="center" width="200"  fixed="right" class-name="small-padding fixed-width">
+      <el-table-column label="操作" align="center" width="200" fixed="right" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
           <el-button-group>
-          <el-button type="primary" icon="el-icon-edit" @click="handle(row,'edit')"></el-button>
-          <el-button type="success" icon="el-icon-view" @click="handle(row,'view')"></el-button>
-          <el-button type="danger" icon="el-icon-delete" @click="handle(row,'del')"></el-button>
+            <el-button type="primary" icon="el-icon-edit" @click="handle(row,'edit')" />
+            <el-button type="success" icon="el-icon-view" @click="handle(row,'view')" />
+            <el-button type="danger" icon="el-icon-delete" @click="handle(row,'del')" />
           </el-button-group>
         </template>
       </el-table-column>
@@ -97,29 +96,29 @@
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-card class="sf-box-card">
-      <el-form ref="dataForm" :rules="rules" :model="bean" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
-        <el-form-item label="name" prop="name">
-          <el-input v-model="bean.name" :readonly="dialogStatus=='view'"/>
-        </el-form-item>
-        <el-form-item label="address">
-          <el-input v-model="bean.address" :readonly="dialogStatus=='view'" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="Please input" />
-        </el-form-item>
-        <el-form-item label="photo">
-          <el-input v-model="bean.photo" :readonly="dialogStatus=='view'" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="Please input" />
-        </el-form-item>
-        <el-form-item label="introduce">
-          <el-input v-model="bean.introduce" :readonly="dialogStatus=='view'" :autosize="{ minRows: 4, maxRows: 6}" type="textarea" placeholder="Please input" />
-        </el-form-item>
-        <el-form-item label="remark">
-          <el-input v-model="bean.remark" :readonly="dialogStatus=='view'" :autosize="{ minRows: 4, maxRows: 6}" type="textarea" placeholder="Please input" />
-        </el-form-item>
-      </el-form>
+        <el-form ref="dataForm" :rules="rules" :model="bean" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
+          <el-form-item label="name" prop="name">
+            <el-input v-model="bean.name" :readonly="dialogStatus=='view'" />
+          </el-form-item>
+          <el-form-item label="address">
+            <el-input v-model="bean.address" :readonly="dialogStatus=='view'" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="Please input" />
+          </el-form-item>
+          <el-form-item label="photo">
+            <el-input v-model="bean.photo" :readonly="dialogStatus=='view'" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="Please input" />
+          </el-form-item>
+          <el-form-item label="introduce">
+            <el-input v-model="bean.introduce" :readonly="dialogStatus=='view'" :autosize="{ minRows: 4, maxRows: 6}" type="textarea" placeholder="Please input" />
+          </el-form-item>
+          <el-form-item label="remark">
+            <el-input v-model="bean.remark" :readonly="dialogStatus=='view'" :autosize="{ minRows: 4, maxRows: 6}" type="textarea" placeholder="Please input" />
+          </el-form-item>
+        </el-form>
       </el-card>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">
           取消
         </el-button>
-        <el-button type="primary" v-if="dialogStatus!='view'" @click="saveOrUpdate()">
+        <el-button v-if="dialogStatus!='view'" type="primary" @click="saveOrUpdate()">
           确认
         </el-button>
       </div>
@@ -127,12 +126,12 @@
 
 
 
-    <el-dialog title="选择显示项" :visible.sync="showFlag" width="50%"  :close-on-click-modal="false">
+    <el-dialog title="选择显示项" :visible.sync="showFlag" width="50%" :close-on-click-modal="false">
       <el-card class="sf-box-card">
-      <div class="components-container sf-board">
-        <Kanban :list="hasShow" :group="group" class="sf-kanban done" header-text="已显示项" />
-        <Kanban :list="notShow" :group="group" class="sf-kanban working" header-text="未显示项" />
-      </div>
+        <div class="components-container sf-board">
+          <Kanban :list="hasShow" :group="group" class="sf-kanban done" header-text="已显示项" />
+          <Kanban :list="notShow" :group="group" class="sf-kanban working" header-text="未显示项" />
+        </div>
 
       </el-card>
 
@@ -146,7 +145,7 @@
       </div>
 
     </el-dialog>
-    </el-card>
+  </el-card>
 </template>
 
 <script>
