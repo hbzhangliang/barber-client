@@ -21,7 +21,7 @@
                 </div>
               </el-col>
             </el-row>
-            <el-row v-show="showSearchMore">
+            <el-row v-show="showSearchMore" style="margin-bottom: 10px;">
               <el-col :span="11">
                 图片：<input v-model="pageParams.filter.lk_phone" class="w-300" placeholder="请输入图片,模糊查询" />
               </el-col>
