@@ -2,23 +2,30 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: '/user/login',
+    url: '/account/login',
     method: 'post',
     data
   })
 }
 
-export function getInfo(token) {
+export function enterCorp(data) {
   return request({
-    url: '/user/info',
-    method: 'get',
-    params: { token }
+    url: '/account/enter-corp',
+    method: 'post',
+    data
+  })
+}
+
+export function getInfo() {
+  return request({
+    url: '/account/info',
+    method: 'post'
   })
 }
 
 export function logout() {
   return request({
-    url: '/user/logout',
+    url: '/account/logout',
     method: 'post'
   })
 }

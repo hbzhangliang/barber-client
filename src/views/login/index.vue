@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h3 class="title">系统登录</h3>
       </div>
 
       <el-form-item prop="username">
@@ -45,7 +45,7 @@
         </el-form-item>
       </el-tooltip>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
+      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
 
       <div style="position:relative">
         <div class="tips">
@@ -58,7 +58,7 @@
         </div>
 
         <el-button class="thirdparty-button" type="primary" @click="showDialog=true">
-          Or connect with
+          忘记密码
         </el-button>
       </div>
     </el-form>
@@ -70,12 +70,37 @@
       <br>
       <social-sign />
     </el-dialog>
+
+
+    <el-dialog title="选择企业进入" :visible.sync="corpShow" width="30%" :close-on-click-modal="false">
+      <el-card class="sf-box-card">
+        <div class="components-container sf-board">
+          <el-radio-group v-model="chooseDepart">
+            <el-radio :label="item.id" border v-for="item in departList">{{item.name}}</el-radio>
+          </el-radio-group>
+        </div>
+      </el-card>
+
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="corpShow = false">
+          关闭
+        </el-button>
+        <el-button type="primary" @click="enter()">
+          进入
+        </el-button>
+      </div>
+
+    </el-dialog>
+
+
   </div>
 </template>
 
 <script>
 import { validUsername } from '@/utils/validate'
 import SocialSign from './components/SocialSignin'
+import { login,enterCorp } from '@/api/user'
+import { getToken, setToken, removeToken } from '@/utils/auth'
 
 export default {
   name: 'Login',
@@ -90,15 +115,17 @@ export default {
     }
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
-        callback(new Error('The password can not be less than 6 digits'))
+        // callback(new Error('The password can not be less than 6 digits'))
+        callback()
       } else {
         callback()
       }
+
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: '111111'
+        username: 'all',
+        password: '1'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -109,7 +136,12 @@ export default {
       loading: false,
       showDialog: false,
       redirect: undefined,
-      otherQuery: {}
+      otherQuery: {},
+
+      corpShow:false,
+      accountVo:null,
+      departList:[],
+      chooseDepart:null
     }
   },
   watch: {
@@ -164,14 +196,45 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$store.dispatch('user/login', this.loginForm)
-            .then(() => {
-              this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
-              this.loading = false
-            })
-            .catch(() => {
-              this.loading = false
-            })
+          login(this.loginForm).then(response => {
+            this.loading = false
+            var data=response.data
+            console.log("11")
+            //登录成功
+            if(data.status!=null&&data.status=='1'){
+              console.log("22")
+              setToken(data.token)
+              // this.corpShow=true
+              // this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
+            }
+            //显示企业列表
+            else if(data.status!=null&&data.status=='2'){
+               this.accountVo=data.accountVo
+              this.departList=data.accountVo.departList
+              this.corpShow=true
+               // var {dt} =data.accountVo
+               // this.accountVo=JSON.parse(data.accountVo)
+              // console.log(this.accountVo)
+            }
+            else {
+              console.log("44")
+              this.$message.error('登录错误');
+            }
+            // const { data } = response
+            // commit('SET_TOKEN', data.token)
+            // setToken(data.token)
+
+          }).catch(error => {
+            // reject(error)
+          })
+          // this.$store.dispatch('user/login', this.loginForm)
+          //   .then(() => {
+          //     this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
+          //     this.loading = false
+          //   })
+          //   .catch(() => {
+          //     this.loading = false
+          //   })
           // this.$store.dispatch('mysql/t-sys-account/login', this.loginForm)
           //   .then(() => {
           //     this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
@@ -184,6 +247,27 @@ export default {
           console.log('error submit!!')
           return false
         }
+      })
+    },
+    enter(){
+      if(this.chooseDepart==null){
+        this.$message({
+          message: '请先选择需要登录进入的企业',
+          type: 'warning'
+        });
+        return
+      }
+      var params={
+        accountId:parseInt(this.accountVo.account.id),
+        departId:parseInt(this.chooseDepart)
+      }
+      enterCorp(params).then(response => {
+          console.log(11,response)
+        var data=response.data
+        setToken(data.token)
+        this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
+      }).catch(error => {
+        this.$message.error('进入企业出错');
       })
     },
     getOtherQuery(query) {

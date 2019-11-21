@@ -1,18 +1,25 @@
-import { login, logout, getInfo } from '@/api/user'
+import { login, logout, getInfo,enterCorp } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import router, { resetRouter } from '@/router'
 
 const state = {
   token: getToken(),
+  roles: [],
+  data:null,
   name: '',
   avatar: '',
-  introduction: '',
-  roles: []
+  introduction: ''
 }
 
 const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
+  },
+  SET_ROLES: (state, roles) => {
+    state.roles = roles
+  },
+  SET_DATA:(state,data)=>{
+    state.data=data
   },
   SET_INTRODUCTION: (state, introduction) => {
     state.introduction = introduction
@@ -23,9 +30,6 @@ const mutations = {
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
   },
-  SET_ROLES: (state, roles) => {
-    state.roles = roles
-  }
 }
 
 const actions = {
@@ -44,28 +48,33 @@ const actions = {
       })
     })
   },
+  enterCorp({commit},param){
+    const { accountId, departId } = param
+    return new Promise((resolve, reject) => {
+      enterCorp({ accountId: accountId, departId: departId }).then(response => {
+        console.log(response)
+        const { data } = response.data
+        commit('SET_TOKEN', data.token)
+        setToken(data.token)
+        resolve()
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
 
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
-        const { data } = response
-        if (!data) {
-          reject('Verification failed, please Login again.')
-        }
+      getInfo().then(response => {
+        console.log('oo',response)
+        commit('SET_ROLES', ['admin'])
+        commit('SET_DATA',response.data)
 
-        const { roles, name, avatar, introduction } = data
-        console.log(avatar)
-        // roles must be a non-empty array
-        if (!roles || roles.length <= 0) {
-          reject('getInfo: roles must be a non-null array!')
-        }
-
-        commit('SET_ROLES', roles)
-        commit('SET_NAME', name)
+        commit('SET_NAME', response.data.account.account)
         commit('SET_AVATAR', '/static/user.gif')
-        commit('SET_INTRODUCTION', introduction)
-        resolve(data)
+        commit('SET_INTRODUCTION', '')
+        resolve(response)
       }).catch(error => {
         reject(error)
       })
@@ -75,7 +84,7 @@ const actions = {
   // user logout
   logout({ commit, state, dispatch }) {
     return new Promise((resolve, reject) => {
-      logout(state.token).then(() => {
+      logout().then(() => {
         commit('SET_TOKEN', '')
         commit('SET_ROLES', [])
         removeToken()
