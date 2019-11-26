@@ -106,14 +106,20 @@ export const constantRoutes = [
       {
         path: 'barber',
         component: () => import('@/views/user-mng/depart'),
-        name: '美容师管理',
-        meta: { title: '美容师管理', icon: 'people' }
+        name: '用户管理',
+        meta: { title: '用户管理', icon: 'people' }
       },
       {
         path: 'customer',
         component: () => import('@/views/user-mng/depart'),
         name: '客户管理',
         meta: { title: '客户管理', icon: 'peoples' }
+      },
+      {
+        path: 'test',
+        component: () => import('@/views/user-mng/test'),
+        name: '测试页面',
+        meta: { title: '测试页面', icon: 'peoples' }
       }
     ]
   },

@@ -156,7 +156,7 @@
   import Kanban from '@/components/Kanban'
 
   export default {
-    name: 'ComplexTable',
+    name: 'depart',
     components: { Pagination,Kanban },
     directives: { waves },
     data() {
