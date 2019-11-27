@@ -6,10 +6,10 @@
           <el-form>
             <el-row>
               <el-col :span="11">
-                名称：<input v-model="pageParams.filter.lk_name" class="w-300" placeholder="请输入名称,模糊查询"/>
+                名称：<input v-model="pageParams.filter.lk_name" class="sf-search-input-300" placeholder="请输入名称,模糊查询"/>
               </el-col>
               <el-col :span="11">
-                地址：<input v-model="pageParams.filter.lk_address" class="w-300" placeholder="请输入地址,模糊查询"/>
+                地址：<input v-model="pageParams.filter.lk_address" class="sf-search-input-300" placeholder="请输入地址,模糊查询"/>
               </el-col>
 
               <el-col :span="2">
@@ -23,18 +23,18 @@
             </el-row>
             <el-row v-show="showSearchMore" style="margin-bottom: 10px;">
               <el-col :span="11">
-                图片：<input v-model="pageParams.filter.lk_phone" class="w-300" placeholder="请输入图片,模糊查询" />
+                图片：<input v-model="pageParams.filter.lk_phone" class="sf-search-input-300" placeholder="请输入图片,模糊查询" />
               </el-col>
               <el-col :span="11">
-                简介：<input v-model="pageParams.filter.lk_introduce" class="w-300" placeholder="请输入简介,模糊查询" />
+                简介：<input v-model="pageParams.filter.lk_introduce" class="sf-search-input-300" placeholder="请输入简介,模糊查询" />
               </el-col>
             </el-row>
             <el-row v-show="showSearchMore">
               <el-col :span="11">
-                备注：<input v-model="pageParams.filter.lk_remark" class="w-300" placeholder="请输入备注,模糊查询" />
+                备注：<input v-model="pageParams.filter.lk_remark" class="sf-search-input-300" placeholder="请输入备注,模糊查询" />
               </el-col>
               <el-col :span="11">
-                状态：<input v-model="pageParams.filter.lk_status" class="w-300" placeholder="请输入状态,模糊查询" />
+                状态：<input v-model="pageParams.filter.lk_status" class="sf-search-input-300" placeholder="请输入状态,模糊查询" />
               </el-col>
             </el-row>
           </el-form>
