@@ -116,6 +116,12 @@ export const constantRoutes = [
         meta: { title: '客户管理', icon: 'peoples' }
       },
       {
+        path: 'dict',
+        component: () => import('@/views/user-mng/dict'),
+        name: '字典项管理',
+        meta: { title: '字典项管理', icon: 'peoples' }
+      },
+      {
         path: 'test',
         component: () => import('@/views/user-mng/test'),
         name: '测试页面',
