@@ -21,14 +21,18 @@
                 </div>
               </el-col>
             </el-row>
-            <el-row v-show="showSearchMore">
-              <el-col :span="11">
-                <span class="sf-search-left">备注：</span><input v-model="pageParams.filter.lk_remark" class="sf-search-input-300" placeholder="请输入备注,模糊查询" />
-              </el-col>
-              <el-col :span="11">
-                <span class="sf-search-left">状态：</span><input v-model="pageParams.filter.lk_status" class="sf-search-input-300" placeholder="请输入状态,模糊查询" />
-              </el-col>
-            </el-row>
+            <el-collapse-transition>
+              <div v-show="showSearchMore">
+                <el-row>
+                  <el-col :span="11">
+                    <span class="sf-search-left">备注：</span><input v-model="pageParams.filter.lk_remark" class="sf-search-input-300" placeholder="请输入备注,模糊查询" />
+                  </el-col>
+                  <el-col :span="11">
+                    <span class="sf-search-left">状态：</span><input v-model="pageParams.filter.lk_status" class="sf-search-input-300" placeholder="请输入状态,模糊查询" />
+                  </el-col>
+                </el-row>
+              </div>
+            </el-collapse-transition>
           </el-form>
         </el-card>
       </div>

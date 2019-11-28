@@ -21,22 +21,26 @@
                 </div>
               </el-col>
             </el-row>
-            <el-row v-show="showSearchMore" style="margin-bottom: 10px;">
-              <el-col :span="11">
-                图片：<input v-model="pageParams.filter.lk_phone" class="sf-search-input-300" placeholder="请输入图片,模糊查询" />
-              </el-col>
-              <el-col :span="11">
-                简介：<input v-model="pageParams.filter.lk_introduce" class="sf-search-input-300" placeholder="请输入简介,模糊查询" />
-              </el-col>
-            </el-row>
-            <el-row v-show="showSearchMore">
-              <el-col :span="11">
-                备注：<input v-model="pageParams.filter.lk_remark" class="sf-search-input-300" placeholder="请输入备注,模糊查询" />
-              </el-col>
-              <el-col :span="11">
-                状态：<input v-model="pageParams.filter.lk_status" class="sf-search-input-300" placeholder="请输入状态,模糊查询" />
-              </el-col>
-            </el-row>
+            <el-collapse-transition>
+              <div v-show="showSearchMore">
+                <el-row style="margin-bottom: 10px;">
+                  <el-col :span="11">
+                    图片：<input v-model="pageParams.filter.lk_phone" class="sf-search-input-300" placeholder="请输入图片,模糊查询" />
+                  </el-col>
+                  <el-col :span="11">
+                    简介：<input v-model="pageParams.filter.lk_introduce" class="sf-search-input-300" placeholder="请输入简介,模糊查询" />
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="11">
+                    备注：<input v-model="pageParams.filter.lk_remark" class="sf-search-input-300" placeholder="请输入备注,模糊查询" />
+                  </el-col>
+                  <el-col :span="11">
+                    状态：<input v-model="pageParams.filter.lk_status" class="sf-search-input-300" placeholder="请输入状态,模糊查询" />
+                  </el-col>
+                </el-row>
+              </div>
+            </el-collapse-transition>
           </el-form>
         </el-card>
       </div>
