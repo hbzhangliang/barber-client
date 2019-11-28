@@ -1,34 +1,17 @@
 import request from '@/utils/request'
 
-export function login(data) {
-  return request({
-    url: '/account/login',
-    method: 'post',
-    data
-  })
-}
 
-export function enterCorp(data) {
-  return request({
-    url: '/account/enter-corp',
-    method: 'post',
-    data
-  })
-}
 
-export function getInfo() {
-  return request({
-    url: '/account/info',
-    method: 'post'
-  })
-}
+export function login(data) {return request({url:'/account/login',method: 'post',data})}
+export function enterCorp(data) {return request({url: '/account/enter-corp',method: 'post',data})}
+export function getInfo() {return request({url: '/account/info',method: 'post'})}
+export function logout() {return request({url: '/account/logout', method: 'post'})}
 
-export function logout() {
-  return request({
-    url: '/account/logout',
-    method: 'post'
-  })
-}
+export function accountListAll() {return request({url: '/sys-account/list-all', method: 'post'})}
+export function accountList(data) {return request({url: '/sys-account/list', method: 'post', data})}
+export function accountGet(data) {return request({url: '/sys-account/get', method: 'post', data})}
+export function accountSave(data) {return request({url: '/sys-account/save', method: 'post', data})}
+export function accountDel(data) {return request({url: '/sys-account/del', method: 'post', data})}
 
 export function departListAll() {return request({url: '/depart/list-all', method: 'post'})}
 export function departList(data) {return request({url: '/depart/list', method: 'post', data})}
