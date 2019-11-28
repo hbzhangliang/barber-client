@@ -42,3 +42,27 @@ export function dictList(data) {return request({url: '/dict/list', method: 'post
 export function dictGet(data) {return request({url: '/dict/get', method: 'post', data})}
 export function dictSave(data) {return request({url: '/dict/save', method: 'post', data})}
 export function dictDel(data) {return request({url: '/dict/del', method: 'post', data})}
+
+export function barberListAll() {return request({url: '/barber/list-all', method: 'post'})}
+export function barberList(data) {return request({url: '/barber/list', method: 'post', data})}
+export function barberGet(data) {return request({url: '/barber/get', method: 'post', data})}
+export function barberSave(data) {return request({url: '/barber/save', method: 'post', data})}
+export function barberDel(data) {return request({url: '/barber/del', method: 'post', data})}
+
+export function customerListAll() {return request({url: '/customer/list-all', method: 'post'})}
+export function customerList(data) {return request({url: '/customer/list', method: 'post', data})}
+export function customerGet(data) {return request({url: '/customer/get', method: 'post', data})}
+export function customerSave(data) {return request({url: '/customer/save', method: 'post', data})}
+export function customerDel(data) {return request({url: '/customer/del', method: 'post', data})}
+
+export function vbarberListAll() {return request({url: '/v-barber/list-all', method: 'post'})}
+export function vbarberList(data) {return request({url: '/v-barber/list', method: 'post', data})}
+export function vbarberGet(data) {return request({url: '/v-barber/get', method: 'post', data})}
+export function vbarberSave(data) {return request({url: '/v-barber/save', method: 'post', data})}
+export function vbarberDel(data) {return request({url: '/v-barber/del', method: 'post', data})}
+
+export function vcustomerListAll() {return request({url: '/v-customer/list-all', method: 'post'})}
+export function vcustomerList(data) {return request({url: '/v-customer/list', method: 'post', data})}
+export function vcustomerGet(data) {return request({url: '/v-customer/get', method: 'post', data})}
+export function vcustomerSave(data) {return request({url: '/v-customer/save', method: 'post', data})}
+export function vcustomerDel(data) {return request({url: '/v-customer/del', method: 'post', data})}

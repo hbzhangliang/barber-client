@@ -36,8 +36,10 @@
         this.initWebSocket();
       },
       websocketonmessage(e){ //数据接收
-        // const redata = JSON.parse(e.data);
-        console.log('a',e.data)
+        this.$notify.info({
+          title: '消息',
+          message: e.data
+        });
       },
       websocketsend(Data){//数据发送
         this.websock.send(Data);
