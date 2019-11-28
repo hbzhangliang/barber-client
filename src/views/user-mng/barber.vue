@@ -98,16 +98,102 @@
 
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
-      <el-card class="sf-box-card">
         <el-form ref="dataForm" :rules="rules" :model="bean" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
-          <el-form-item label="name" prop="name">
-            <el-input v-model="bean.name" :readonly="dialogStatus=='view'" />
-          </el-form-item>
-          <el-form-item label="remark">
-            <el-input v-model="bean.remark" :readonly="dialogStatus=='view'" :autosize="{ minRows: 4, maxRows: 6}" type="textarea" placeholder="Please input" />
-          </el-form-item>
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>账号信息</span>
+            </div>
+            <div>
+              <el-form-item label="name" prop="name">
+                <el-input class="sf-search-input-300" v-model="bean.account" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+              <el-form-item label="name" prop="name">
+                <el-input class="sf-search-input-300" v-model="bean.password" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+            </div>
+          </el-card>
+
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>门店信息</span>
+            </div>
+            <div>
+              <el-form-item label="departName" prop="departName">
+                <el-input class="sf-search-input-300" v-model="bean.departName" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+              <el-form-item label="departAddress" prop="departAddress">
+                <el-input class="sf-search-input-300" v-model="bean.departAddress" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+              <el-form-item label="departPhoto" prop="departPhoto">
+                <el-input class="sf-search-input-300" v-model="bean.departPhoto" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+              <el-form-item label="departIntroduce" prop="departIntroduce">
+                <el-input class="sf-search-input-300" v-model="bean.departIntroduce" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+            </div>
+          </el-card>
+
+
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>员工信息</span>
+            </div>
+            <div>
+              <el-form-item label="name" prop="name">
+                <el-input class="sf-search-input-300" v-model="bean.name" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+              <el-form-item label="remark">
+                <el-input class="sf-search-input-300" v-model="bean.gender" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+
+              <el-form-item label="birthday" prop="birthday">
+                <el-input class="sf-search-input-300" v-model="bean.birthday" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+              <el-form-item label="phone">
+                <el-input class="sf-search-input-300" v-model="bean.phone" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+
+              <el-form-item label="address" prop="address">
+                <el-input class="sf-search-input-300" v-model="bean.address" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+              <el-form-item label="email">
+                <el-input class="sf-search-input-300" v-model="bean.email" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+
+              <el-form-item label="qq" prop="qq">
+                <el-input class="sf-search-input-300" v-model="bean.qq" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+              <el-form-item label="contact">
+                <el-input class="sf-search-input-300" v-model="bean.contact" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+
+              <el-form-item label="contactNum" prop="contactNum">
+                <el-input class="sf-search-input-300" v-model="bean.contactNum" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+              <el-form-item label="joinDate">
+                <el-input class="sf-search-input-300" v-model="bean.joinDate" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+
+              <el-form-item label="leaveDate" prop="leaveDate">
+                <el-input class="sf-search-input-300" v-model="bean.leaveDate" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+              <el-form-item label="skill">
+                <el-input class="sf-search-input-300" v-model="bean.skill" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+
+              <el-form-item label="remark" prop="remark">
+                <el-input class="sf-search-input-300" v-model="bean.remark" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+              <el-form-item label="status">
+                <el-input class="sf-search-input-300" v-model="bean.status" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+
+              <el-form-item label="flag" prop="flag">
+                <el-input class="sf-search-input-300" v-model="bean.flag" :readonly="dialogStatus=='view'" />
+              </el-form-item>
+            </div>
+          </el-card>
         </el-form>
-      </el-card>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">
           取消
@@ -342,6 +428,12 @@
           id:null,
           accountId:null,
           departId:null,
+          account:null,
+          password:null,
+          departName:null,
+          departAddress:null,
+          departPhoto:null,
+          departIntroduce:null,
           name:null,
           gender:null,
           birthday:null,
@@ -520,5 +612,11 @@
         background: #2ac06d;
       }
     }
+  }
+
+  .box-card{
+    width: 650px;
+    min-width: 600px;
+    margin: 5px 2px;
   }
 </style>
