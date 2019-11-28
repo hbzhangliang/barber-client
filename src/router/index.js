@@ -111,7 +111,7 @@ export const constantRoutes = [
       },
       {
         path: 'customer',
-        component: () => import('@/views/user-mng/depart'),
+        component: () => import('@/views/user-mng/customer'),
         name: '客户管理',
         meta: { title: '客户管理', icon: 'peoples' }
       },
