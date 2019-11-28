@@ -6,10 +6,10 @@
           <el-form>
             <el-row>
               <el-col :span="11">
-                编码：<input v-model="pageParams.filter.lk_code" class="sf-search-input-300" placeholder="请输入编码,模糊查询"/>
+                <span class="sf-search-left">编码：</span><input v-model="pageParams.filter.lk_code" class="sf-search-input-300" placeholder="请输入编码,模糊查询"/>
               </el-col>
               <el-col :span="11">
-                名称：<input v-model="pageParams.filter.lk_name" class="sf-search-input-300" placeholder="请输入名称,模糊查询"/>
+                <span class="sf-search-left">名称：</span><input v-model="pageParams.filter.lk_name" class="sf-search-input-300" placeholder="请输入名称,模糊查询"/>
               </el-col>
 
               <el-col :span="2">
@@ -23,10 +23,10 @@
             </el-row>
             <el-row v-show="showSearchMore">
               <el-col :span="11">
-                备注：<input v-model="pageParams.filter.lk_remark" class="sf-search-input-300" placeholder="请输入备注,模糊查询" />
+                <span class="sf-search-left">备注：</span><input v-model="pageParams.filter.lk_remark" class="sf-search-input-300" placeholder="请输入备注,模糊查询" />
               </el-col>
               <el-col :span="11">
-                状态：<input v-model="pageParams.filter.lk_status" class="sf-search-input-300" placeholder="请输入状态,模糊查询" />
+                <span class="sf-search-left">状态：</span><input v-model="pageParams.filter.lk_status" class="sf-search-input-300" placeholder="请输入状态,模糊查询" />
               </el-col>
             </el-row>
           </el-form>
@@ -81,7 +81,7 @@
 
     <pagination v-show="pageParams.totalRows>0" :total="pageParams.totalRows" :page.sync="pageParams.page" :limit.sync="pageParams.pageSize" @pagination="getList" />
 
-    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
+    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible" width="60%">
       <el-card class="sf-box-card">
         <div slot="header" class="clearfix">
           <span style="font-size: large">节点信息</span>
@@ -198,7 +198,7 @@
             lk_name:null,
             lk_remark:null,
             lk_status:null,
-            eq_parent_id:-1
+            eq_parentId:-1,
           },
           data: []
         },
@@ -233,9 +233,9 @@
         downloadLoading: false,
         showsOrgin:[
           {key: 1, prop: 'id', label: '编号', sortable: 'custom', type: '', orgin: 'id',},
-          {key: 2, prop: 'code', label: '编码', sortable: 'custom', type: '', orgin: 'name'},
-          {key: 3, prop: 'name', label: '名称', sortable: 'custom', type: '', orgin: 'address'},
-          {key: 4, prop: 'parentId', label: '父节点', sortable: 'custom', type: '', orgin: 'photo'},
+          {key: 2, prop: 'code', label: '编码', sortable: 'custom', type: '', orgin: 'code'},
+          {key: 3, prop: 'name', label: '名称', sortable: 'custom', type: '', orgin: 'name'},
+          {key: 4, prop: 'parentId', label: '父节点', sortable: 'custom', type: '', orgin: 'parentId'},
           {key: 6, prop: 'remark', label: '备注', sortable: 'custom', type: '', orgin: 'remark'},
           {key: 7, prop: 'status', label: '状态', sortable: 'custom', type: '', orgin: 'status'},
           {key: 8, prop: 'flag', label: '删除位', sortable: 'custom', type: '', orgin: 'flag'},
@@ -367,7 +367,7 @@
           lk_name:null,
           lk_remark:null,
           lk_status:null,
-          eq_parent_id:-1
+          eq_parentId:-1
         }
       },
       saveOrUpdate(){
