@@ -218,9 +218,9 @@
         showsOrgin:[
           {key: 1, prop: 'id', label: '编号', sortable: 'custom', type: '', orgin: 'id',},
           {key: 2, prop: 'account', label: '名称', sortable: 'custom', type: '', orgin: 'account'},
-          {key: 3, prop: 'password', label: '地址', sortable: 'custom', type: '', orgin: 'password'},
-          {key: 4, prop: 'stype', label: '图片', sortable: 'custom', type: '', orgin: 'stype'},
-          {key: 5, prop: 'phone', label: '介绍', sortable: 'custom', type: '', orgin: 'phone'},
+          {key: 3, prop: 'password', label: '密码', sortable: 'custom', type: '', orgin: 'password'},
+          {key: 4, prop: 'stype', label: '类型', sortable: 'custom', type: '', orgin: 'stype'},
+          {key: 5, prop: 'phone', label: '手机', sortable: 'custom', type: '', orgin: 'phone'},
           {key: 6, prop: 'remark', label: '备注', sortable: 'custom', type: '', orgin: 'remark'},
           {key: 7, prop: 'status', label: '状态', sortable: 'custom', type: '', orgin: 'status'},
           {key: 8, prop: 'flag', label: '删除位', sortable: 'custom', type: '', orgin: 'flag'},

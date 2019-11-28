@@ -99,7 +99,7 @@ export const constantRoutes = [
       },
       {
         path: 'account',
-        component: () => import('@/views/user-mng/depart'),
+        component: () => import('@/views/user-mng/account'),
         name: '账号管理',
         meta: { title: '账号管理', icon: 'form' }
       },
