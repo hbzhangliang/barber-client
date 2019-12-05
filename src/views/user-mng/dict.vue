@@ -100,6 +100,9 @@
           <el-form-item label="remark">
             <el-input v-model="bean.remark" :readonly="dialogStatus=='view'" :autosize="{ minRows: 4, maxRows: 6}" type="textarea" placeholder="Please input" />
           </el-form-item>
+          <el-form-item label="seq">
+            <el-input v-model="bean.seq" :readonly="dialogStatus=='view'" />
+          </el-form-item>
         </el-form>
       </el-card>
 
@@ -132,6 +135,12 @@
               <template scope="scope">
                 <el-input v-show="scope.row.edit" size="small" v-model="scope.row.remark"></el-input>
                 <span v-show="!scope.row.edit">{{ scope.row.remark }}</span>
+              </template>
+            </el-table-column>
+            <el-table-column prop="seq" label="排序号" align="center" min-width="20%">
+              <template scope="scope">
+                <el-input v-show="scope.row.edit" size="small" v-model="scope.row.seq"></el-input>
+                <span v-show="!scope.row.edit">{{ scope.row.seq }}</span>
               </template>
             </el-table-column>
 
@@ -224,7 +233,8 @@
           remark:null,
           parentId:null,
           status:null,
-          flag:null
+          flag:null,
+          seq:null
         },
         showSearchMore:false,
 
@@ -242,6 +252,7 @@
           {key: 4, prop: 'parentId', label: '父节点', sortable: 'custom', type: '', orgin: 'parentId'},
           {key: 6, prop: 'remark', label: '备注', sortable: 'custom', type: '', orgin: 'remark'},
           {key: 7, prop: 'status', label: '状态', sortable: 'custom', type: '', orgin: 'status'},
+          {key: 8, prop: 'seq', label: '排序号', sortable: 'custom', type: '', orgin: 'seq'},
           {key: 8, prop: 'flag', label: '删除位', sortable: 'custom', type: '', orgin: 'flag'},
           {key: 9, prop: 'createTimeStr', label: '创建时间', sortable: 'custom', type: 'date', orgin: 'createTime'},
           {key: 10, prop: 'createBy', label: '创建人', sortable: 'custom', type: '', orgin: 'createBy'},
@@ -253,7 +264,7 @@
         group:"show",
         hasShow:[],
         notShow:[],
-        showList:["id","code","name","parentId","remark"],
+        showList:["id","code","name","parentId","remark","seq"],
 
         dictChildren:[]
 
